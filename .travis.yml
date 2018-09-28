@@ -2,39 +2,25 @@ os: linux
 dist: trusty
 language: php
 
-php:
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - master
-
-env:
-  - PHPUNIT_VERSION=5 REDIS_VERSION=3.0.0
-  - PHPUNIT_VERSION=6 REDIS_VERSION=3.0.0
-  - PHPUNIT_VERSION=7 REDIS_VERSION=3.0.0
-  - PHPUNIT_VERSION=4 REDIS_VERSION=4.0.0
-  - PHPUNIT_VERSION=5 REDIS_VERSION=4.0.0
-  - PHPUNIT_VERSION=6 REDIS_VERSION=4.0.0
-  - PHPUNIT_VERSION=7 REDIS_VERSION=4.0.0
+#php:
+#  - 5.6
+#  - 7.2
+##  - master
 
 matrix:
   include:
     - dist: precise
       php: 5.3
-      env: PHPUNIT_VERSION=4 REDIS_VERSION=3.0.0
+      before_install:
+        - pecl install redis:3.0.0
+        - composer require phpunit/phpunit:^4
 
 sudo: false
 notifications:
   email: false
 
-before_install:
-  - pecl install redis:$REDIS_VERSION
-  - composer clear-cache
-
 install:
-  - composer install --dev
-  - composer require phpunit/phpunit:^$PHPUNIT_VERSION
+  - composer install
 
 script:
   - ./vendor/bin/phpunit --coverage-clover=coverage.xml
