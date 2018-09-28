@@ -21,7 +21,7 @@
   },
   "require": {
     "php": ">=7",
-    "ext-redis": ">=2.0",
+    "ext-redis": ">=3.0",
     "chemisus/provider": "^1.0"
   },
   "require-dev": {
