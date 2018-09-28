@@ -11,9 +11,10 @@ matrix:
   include:
     - dist: precise
       php: 5.3
+      env: PHPUNIT_VERSION=4.0.0 REDIS_VERSION=3.0.0
       before_install:
-        - echo "" | pecl install redis
-        - composer require phpunit/phpunit:^4
+        - echo "" | pecl install redis-${REDIS_VERSION}
+        - composer require phpunit/phpunit:^${PHPUNIT_VERSION}
 
 sudo: false
 notifications:
