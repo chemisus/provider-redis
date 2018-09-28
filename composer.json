@@ -20,9 +20,9 @@
     }
   },
   "require": {
-    "php": ">=7",
-    "ext-redis": ">=3.0",
-    "chemisus/provider": "^1.0"
+    "php": "^7.1",
+    "ext-redis": ">=3",
+    "chemisus/provider": "^1"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.3"
