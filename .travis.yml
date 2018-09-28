@@ -3,30 +3,24 @@ dist: trusty
 language: php
 
 php:
-#  - 7.0
-#  - 7.1
-#  - 7.2
+  - 7.1
+  - 7.2
   - 7.3
   - master
 
-redis:
-#  - 3.0.0
-#  - 3.1.6
-  - 4.0.0
-  - 4.1.1
+env:
+  - REDIS_VERSION="3.0.0"
+  - REDIS_VERSION="3.1.6"
+  - REDIS_VERSION="4.0.0"
+  - REDIS_VERSION="4.1.1"
 
-phpunit:
-  - ^6.0.0
-  - ^7.0.0
 
 sudo: false
 notifications:
   email: false
 
 before_install:
-  - printenv
-#  - echo "" | pecl install -f redis-$REDIS_VERSION
-#  - composer require phpunit/phpunit:$PHPUNIT_VERSION
+  - echo "" | pecl install -f redis-$REDIS_VERSION
 
 install:
   - composer install
