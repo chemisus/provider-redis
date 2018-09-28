@@ -1,23 +1,31 @@
+os: linux
+dist: trusty
 language: php
-
-sudo: false
 
 php:
   - 7.1
   - 7.2
   - master
 
+env:
+  - REDIS_VERSION="3.0.0"
+  - REDIS_VERSION="3.1.6"
+  - REDIS_VERSION="4.0.0"
+  - REDIS_VERSION="4.1.1"
+
+
+sudo: false
 notifications:
   email: false
 
 before_install:
-  - composer clear-cache
+  - echo "" | pecl install -f redis-$REDIS_VERSION
 
 install:
-  - composer install --dev
+  - composer install
 
 script:
-  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
+  - ./vendor/bin/phpunit --coverage-clover=coverage.xml --testdox
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
