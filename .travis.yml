@@ -12,14 +12,14 @@ php:
   - master
 
 env:
-  - PHPUNIT_VERSION="^6" REDIS_VERSION="3.0.0"
-  - PHPUNIT_VERSION="^6" REDIS_VERSION="3.1.6"
-  - PHPUNIT_VERSION="^6" REDIS_VERSION="4.0.0"
-  - PHPUNIT_VERSION="^6" REDIS_VERSION="4.1.1"
-  - PHPUNIT_VERSION="^7" REDIS_VERSION="3.0.0"
-  - PHPUNIT_VERSION="^7" REDIS_VERSION="3.1.6"
-  - PHPUNIT_VERSION="^7" REDIS_VERSION="4.0.0"
-  - PHPUNIT_VERSION="^7" REDIS_VERSION="4.1.1"
+  - PHPUNIT_VERSION="^6.0.0" REDIS_VERSION="3.0.0"
+  - PHPUNIT_VERSION="^6.0.0" REDIS_VERSION="3.1.6"
+  - PHPUNIT_VERSION="^6.0.0" REDIS_VERSION="4.0.0"
+  - PHPUNIT_VERSION="^6.0.0" REDIS_VERSION="4.1.1"
+  - PHPUNIT_VERSION="^7.0.0" REDIS_VERSION="3.0.0"
+  - PHPUNIT_VERSION="^7.0.0" REDIS_VERSION="3.1.6"
+  - PHPUNIT_VERSION="^7.0.0" REDIS_VERSION="4.0.0"
+  - PHPUNIT_VERSION="^7.0.0" REDIS_VERSION="4.1.1"
 
 sudo: false
 notifications:
@@ -33,7 +33,7 @@ install:
   - composer install
 
 script:
-  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
+  - ./vendor/bin/phpunit --coverage-clover=coverage.xml --testdox
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
