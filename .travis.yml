@@ -12,7 +12,7 @@ matrix:
     - dist: precise
       php: 5.3
       before_install:
-        - pecl install redis:3.0.0
+        - pecl install redis
         - composer require phpunit/phpunit:^4
 
 sudo: false
