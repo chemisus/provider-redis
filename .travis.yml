@@ -29,12 +29,12 @@ notifications:
   email: false
 
 before_install:
-  - pecl install redis:${REDIS_VERSION}
+  - pecl install redis:$REDIS_VERSION
   - composer clear-cache
 
 install:
   - composer install --dev
-  - composer require phpunit/phpunit:${PHPUNIT_VERSION}
+  - composer require phpunit/phpunit:^$PHPUNIT_VERSION
 
 script:
   - ./vendor/bin/phpunit --coverage-clover=coverage.xml
