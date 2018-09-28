@@ -17,10 +17,10 @@
         "src/test",
         "vendor/chemisus/provider/src/test"
       ]
-    },
-    "files": ["src/test/redis.php"]
+    }
   },
   "require": {
+    "ext-redis": "~4.0.0",
     "chemisus/provider": "1.2"
   },
   "require-dev": {
