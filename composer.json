@@ -20,8 +20,8 @@
     }
   },
   "require": {
-    "ext-redis": "~4.0.0",
-    "chemisus/provider": "1.2"
+    "ext-redis": "^3.0",
+    "chemisus/provider": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^7.3"

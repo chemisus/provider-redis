@@ -8,27 +8,27 @@ php:
   - 7.2
   - master
 
-phpunit:
-  - 4
-  - 5
-  - 6
-  - 7
-
-memcached:
-  - ~2.2
-  - ~3.0
+env:
+  - PHPUNIT_VERSION=4 REDIS_VERSION=3
+  - PHPUNIT_VERSION=5 REDIS_VERSION=3
+  - PHPUNIT_VERSION=6 REDIS_VERSION=3
+  - PHPUNIT_VERSION=7 REDIS_VERSION=3
+  - PHPUNIT_VERSION=4 REDIS_VERSION=4
+  - PHPUNIT_VERSION=5 REDIS_VERSION=4
+  - PHPUNIT_VERSION=6 REDIS_VERSION=4
+  - PHPUNIT_VERSION=7 REDIS_VERSION=4
 
 sudo: false
 notifications:
   email: false
 
 before_install:
-  - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - pecl install redis:${REDIS_VERSION}
   - composer clear-cache
 
 install:
   - composer install --dev
-  - composer require
+  - composer require phpunit/phpunit:${PHPUNIT_VERSION}
 
 script:
   - ./vendor/bin/phpunit --coverage-clover=coverage.xml
