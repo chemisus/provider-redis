@@ -1,8 +1,6 @@
 language: php
 
-dist:
-  - precise
-  - trusty
+dist: trusty
 
 php:
   - 5.3
@@ -23,9 +21,8 @@ env:
   - PHPUNIT_VERSION=7 REDIS_VERSION=4
 
 matrix:
-  exclude:
-    -
-      dist: trusty
+  include:
+    - dist: precise
       php: 5.3
 
 sudo: false
